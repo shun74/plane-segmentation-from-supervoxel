@@ -1,6 +1,6 @@
 # Plane segmentation from supervoxel
-Plane segmentation from  *Supervoxels Clustering* in Point Cloud Library.
-A simple "Region Merge" algorithm using normal and centroid of regions detects planes from roughly labeled pcd created by *Supervoxels Clustering*. This is a very simple approach with robust performance and can be applied to areas such as ROS.
+Plane segmentation from  *Supervoxel Clustering* in Point Cloud Library.
+A simple "Region Merge" algorithm using normal and centroid of regions detects planes from roughly labeled pcd created by *Supervoxel Clustering*. This is a very simple approach with robust performance and can be applied to areas such as ROS.
 
 # Environment
 
@@ -77,8 +77,44 @@ or
 **Kinect V2**
 ![Kinect V2](./images/kinect_v2.jpg "kinect v2")
 
-## What is Supervoxels Clustering ?
+## What is Supervoxel Clustering ?
+Supervoxel Clustering is an algorithm that divide the Point Cloud into small clusters. Similarity of color, coordinates, and normal of each points in the point cloud are used for integration.
 
+Please see the official tutorial for more detail. ->
 [PCL Official Tutorial](https://pcl.readthedocs.io/projects/tutorials/en/latest/supervoxel_clustering.html)
 
+*After sueprvoxel clustering*
+![Supervoxel Sample](./images/supervoxel.png "supervoxel sample")
+
+Our "Region Merge" algorithm based on this supervoxel clusters. So the accuracy of this cluster is very important. If you apply better parameters for the situation, our algorithm will performe quite robust.
+
+
 ## Get data from Kinect V2
+
+Let's get a data from Kinect V2. A sample Python program can be found in ./samples.
+
+Befor running this program, you need to install *libfreenect2*. This is a driver package for Kinect V2, which makes it easy to get Kinect V2 data in C ++ ,Python and so on. [libfreenct2 GitHub](https://github.com/OpenKinect/libfreenect2)
+
+### Instllation
+
+Install basic packages.
+```
+sudo apt install build-essential cmake pkg-config
+sudo apt install libusb-1.0-0-dev libturbojpeg0-dev libglfw3-dev beignet-dev libopenni2-dev
+```
+Install libfreenect2.
+```
+git clone https://github.com/OpenKinect/libfreenect2.git
+cd libfreenect2
+mkdir build && cd build
+cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/freenect2
+make
+make install
+```
+Install python wrapper.
+```
+```
+
+You can visualize Point Cloud with *Cloud Compare*.
+
+![PCD Sample](./images/pcd_sample.png "pcd sample")
