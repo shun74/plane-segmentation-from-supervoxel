@@ -113,8 +113,28 @@ make install
 ```
 Install python wrapper.
 ```
+export PKG_CONFIG_PATH=$HOME/freenect2/lib
+pip install --user freenect2
 ```
+Set variable to .bashrc.
+```
+sudo nano ~/.bashrc
+```
+Then, add this line to the .bashrc.
+```
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${HOME}/freenect2/lib"
+```
+restart your terminal to reload .bashrc. You have now installed libfreenect2.
+
+### Get one sample from Kinect V2
+
+Just run Python script in ./sample. To make sure your Kinect V2 connected to USB 3.0.
+```
+python get_data.py
+```
+Color image data, distance image 16-bit raw data, and point cloud data are automatically saved. Kinect V2 camera calibration data is also recorded in .txt. This is a parameter to set when performing 2D execution. See ./configs/2d_image_sample.conf for details.
 
 You can visualize Point Cloud with *Cloud Compare*.
 
+**original.pcd**
 ![PCD Sample](./images/pcd_sample.png "pcd sample")
