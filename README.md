@@ -124,7 +124,11 @@ Then, add this line to the .bashrc.
 ```
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${HOME}/freenect2/lib"
 ```
-restart your terminal to reload .bashrc. You have now installed libfreenect2.
+restart your terminal or reload .bashrc. 
+```
+source ~/.bashrc
+```
+You have now installed libfreenect2.
 
 **Get one sample from Kinect V2**
 
